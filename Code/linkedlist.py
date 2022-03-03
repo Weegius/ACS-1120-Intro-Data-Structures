@@ -1,5 +1,5 @@
 #!python
-# Got help from classmates
+# Got help from
 
 
 class Node(object):
@@ -127,6 +127,7 @@ class LinkedList:
         # Hint: raise ValueError('Item not found: {}'.format(item))
         if self.length() > 0:
             current_node = self.head
+
             if current_node.data == item:
                 if self.head == self.tail:
                     self.tail = None 
@@ -136,7 +137,9 @@ class LinkedList:
                 return
 
             runner = current_node.next
+
             while runner and runner.next:
+                
                 if runner.data == item:
                     current_node.next = runner.next
                     return
@@ -144,6 +147,7 @@ class LinkedList:
                 runner = runner.next
 
             if runner and runner.data == item:
+
                 current_node.next = None
                 self.tail = current_node
                 return

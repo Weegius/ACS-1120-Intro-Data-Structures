@@ -121,10 +121,10 @@ class HashTable(object):
         # Hint: raise KeyError('Key not found: {}'.format(key))
         index = self._bucket_index(key)
         bucket = self.buckets[index]
-        entry = bucket.find_if_matches(lambda entry: entry[0] == key)
-        print(entry)
-        if entry:
-            bucket.delete(entry)
+        enter = bucket.find_if_matches(lambda entry: entry[0] == key)
+        print(enter)
+        if enter:
+            bucket.delete(enter)
         else:
             raise KeyError('Key not found: {}'.format(key))
 
