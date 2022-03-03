@@ -2,7 +2,6 @@
 
 from linkedlist import LinkedList
 
-
 class HashTable(object):
 
     def __init__(self, init_size=8):
@@ -83,6 +82,16 @@ class HashTable(object):
         # TODO: If found, return value associated with given key
         # TODO: Otherwise, raise error to tell user get failed
         # Hint: raise KeyError('Key not found: {}'.format(key))
+        bucket = self.buckets[index]
+        index = self._bucket_index(key)
+
+        entry = bucket.find_if_matches(lambda entry: entry[0] == key)
+
+        if entry:
+            value = entry[1]
+            return value
+        else:
+            raise KeyError('key not found: {}'.format(key))
         
 
     def set(self, key, value):
@@ -92,6 +101,15 @@ class HashTable(object):
         # TODO: Check if key-value entry exists in bucket
         # TODO: If found, update value associated with given key
         # TODO: Otherwise, insert given key-value entry into bucket
+        new_node = (key,value)
+        index = self._bucket_index(key)
+        bucket = self.buckets[index]
+        entry = bucket.find_if_matches(lambda entry: entry[0] == key)
+        
+        if entry:
+            bucket.replace_node(new_node)
+        else:
+            bucket.append(new_node)
 
     def delete(self, key):
         """Delete the given key from this hash table, or raise KeyError.
@@ -101,6 +119,14 @@ class HashTable(object):
         # TODO: If found, delete entry associated with given key
         # TODO: Otherwise, raise error to tell user delete failed
         # Hint: raise KeyError('Key not found: {}'.format(key))
+        index = self._bucket_index(key)
+        bucket = self.buckets[index]
+        entry = bucket.find_if_matches(lambda entry: entry[0] == key)
+        print(entry)
+        if entry:
+            bucket.delete(entry)
+        else:
+            raise KeyError('Key not found: {}'.format(key))
 
 if __name__ == '__main__':
     ht = HashTable()
