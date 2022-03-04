@@ -1,5 +1,5 @@
 """Main script, uses other modules to generate sentences."""
-from flask import Flask, render_template, flash, redirect, request
+from flask import Flask, request, redirect, render_template
 from markov import MarkovbutBetter
 from tokens import tokenize
 import twitter
@@ -13,16 +13,23 @@ def before_first_request():
     """Runs only once at Flask startup"""
     # TODO: Initialize your histogram, hash table, or markov chain here.
     tokens = tokenize('sample.txt')
-    mark = MarkovbutBetter(tokens)
+    mark = MarkovbutBetter
 
 
 
 @app.route("/")
+def home():
+    corpus = open("sample.txt", "r").read()
+    source = tokenize(corpus)    
+    markov = MarkovbutBetter(source)
+    sentence = markov.walk()
+     
+    return render_template('index.html', sentence = sentence)
+
+@app.route('/tweet', methods=['POST'])
 def tweet():
-    sentence = request.form['sentence']
-    print(sentence)
-    status = twitter.tweet(sentence)
-    print(status)
+    status = request.form['sentence']
+    twitter.tweet(status)
     return redirect('/')
 
 
