@@ -42,13 +42,6 @@ class Dictogram(dict):
             target += value
             if target >= dart:
                 return key
-        # updatedlist = []
-
-        # for word in self.keys():
-        #     for amount in range(self[word]):
-        #         updatedlist.append(word)
-
-        # print(random.choice(updatedlist))
 
 
 def print_histogram(word_list):
