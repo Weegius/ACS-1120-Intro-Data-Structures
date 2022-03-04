@@ -1,9 +1,5 @@
 import re
 
-def tokenize(text):
-    tokens = split_on_whitespace(text)
-    return tokens
-
 def split_on_whitespace(text):
     return re.split('\s+', text)
 
@@ -13,8 +9,7 @@ def tokenize(text):
     return tokens
 
 def remove_punctuation(text):
-    no_punc_text = re.sub('[,.()]', '', text)
-    no_punc_text = re.sub('--', ' ', no_punc_text)
+    no_punc_text = re.sub('(?:\d|I{1,3})?\s?\w{2,}\.?\s*\d{1,}\:\d{1,}-?,?\d{0,2}(?:,\d{0,2}){0,2}', '', text)
     return no_punc_text
 
 if __name__ == '__main__':
