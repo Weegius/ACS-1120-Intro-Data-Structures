@@ -18,10 +18,10 @@ class MarkovbutBetter():
         self.mchain[pair] = Dictogram()
       self.mchain[pair].add_count(tokens[i+2])
 
-  def walk(self, length=10):
+  def walk(self, length=20):
     sentence = ""
     pair = self.hist.sample()
-    print(pair)
+    # print(pair)
     sentence += f"{pair[0]} {pair[1]} "
     for i in range(length):
       pair = (pair[1], self.mchain[pair].sample())
