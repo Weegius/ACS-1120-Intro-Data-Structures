@@ -1,17 +1,50 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <blockquote>{{ sentence }}</blockquote>
-<form action="/tweet" method="post">
-   <input type="hidden" name="sentence" value="{{ sentence }}">
-   <button type="submit">Tweet this</button>
-</form>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-</body>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+
+    <title>Second Coming Tweeter</title>
+  </head>
+  <body>
+    <!-- Header - set the background image for the header in the line below-->
+    <header class="py-1 bg-image-full" style="background-image: url('https://www.denisonforum.org/wp-content/uploads/2019/11/FQ-What-is-heaven-like.jpg')">
+      <div class="text-center my-5">
+          <img class="img-fluid rounded-circle mb-4" src="https://qph.fs.quoracdn.net/main-qimg-64f20f60acfb4a1a67f6c444cb8a6b98-lq" alt="heaven" />
+          <h1 class="text-white fs-3 fw-bolder">Jesus Tweets Again!</h1>
+          <p class="text-white-50 mb-0">Text sample is the bible</p>
+      </div>
+  </header>
+  <!-- Content section-->
+  <section class="py-5">
+      <div class="container my-5">
+          <div class="row justify-content-center">
+              <div class="col-lg-6">
+                <div class="card-footer text-muted">
+                  
+                  <blockquote>{{ sentence }}</blockquote>
+
+                  <form action="/tweet" method="post">
+                    <input type="hidden" name="sentence" value="{{ sentence }}">
+                    <button class="btn btn-primary" type="submit">Tweet this</button>
+                  </form>
+
+              </div>
+          </div>
+      </div>
+  </section>
+  <!-- Footer-->
+  <footer class="py-5 bg-dark">
+      <div class="container"><p class="m-0 text-center text-white">Made by Christian Thompson</p></div>
+  </footer>
+    <!-- Separate Popper and Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
+
+  </body>
 </html>
